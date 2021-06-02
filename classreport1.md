@@ -248,9 +248,10 @@ Promise 是一個物件，代表著一個尚未完成，但最終會完成的一
 等待的過程中，其實你無法百分之百肯定最後一定拿得到咖啡（Pending）：店員可能順利做完咖啡交到你手上（Resolved）；可能牛奶或咖啡豆沒了，所以店員告訴你今天做不出咖啡了（Rejected）
 
 💡 Promise 就像上面的例子，可能處於三種階段中任意階段：
-1.Pedning：等待事情完成中，但不確定最終會順利完成或失敗
-2.Resolved（或稱 Fulfilled）：代表順利完成了，並轉交結果
-3.Rejectesd：代表失敗了，並告知失敗原因
+
+1. Pedning：等待事情完成中，但不確定最終會順利完成或失敗
+2. Resolved（或稱 Fulfilled）：代表順利完成了，並轉交結果
+3. Rejectesd：代表失敗了，並告知失敗原因
 
 ### 建立 Promise 物件實例
 
@@ -483,3 +484,12 @@ async 關鍵字可以放在任意函式以前，這意味者：「我們正宣�
 ![](https://i.imgur.com/7tVOofS.jpg)
 
 今天的我比昨天進步總有一天能趕上的!
+
+
+參考資料:
+https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS
+
+https://medium.com/
+%E9%BA%A5%E5%85%8B%E7%9A%84%E5%8D%8A%E8%B7%AF%E5%87%BA%E5%AE%B6%E7%AD%86%E8%A8%98/%E5%BF%83%E5%BE%97-%E8%AA%8D%E8%AD%98%E5%90%8C%E6%AD%A5%E8%88%87%E9%9D%9E%E5%90%8C%E6%AD%A5-callback-promise-async-await-640ea491ea64
+
+https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
