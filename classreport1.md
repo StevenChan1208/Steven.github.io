@@ -236,6 +236,7 @@ doF();
 經典的 callback hell 大概是長這個樣子…
 
 callback hell
+
 ![](https://i.imgur.com/cuHysRx.png)
 
 Solution: promise
@@ -249,11 +250,11 @@ Promise 是一個物件，代表著一個尚未完成，但最終會完成的一
 等待的過程中，其實你無法百分之百肯定最後一定拿得到咖啡（Pending）：店員可能順利做完咖啡交到你手上（Resolved）；可能牛奶或咖啡豆沒了，所以店員告訴你今天做不出咖啡了（Rejected）
 
 💡 Promise 就像上面的例子，可能處於三種階段中任意階段：
-1. Pedning：等待事情完成中，但不確定最終會順利完成或失敗
-2. Resolved（或稱 Fulfilled）：代表順利完成了，並轉交結果
-3. Rejectesd：代表失敗了，並告知失敗原因
+1.Pedning：等待事情完成中，但不確定最終會順利完成或失敗
+2.Resolved（或稱 Fulfilled）：代表順利完成了，並轉交結果
+3.Rejectesd：代表失敗了，並告知失敗原因
 
-####　建立 Promise 物件實例
+###　建立Promise物件實例
 
 一個 Promise 物件是透過 new 關鍵字和它的物件建構子（Constructor）所產生出來的 — 這個建構子函式接收一個帶有 resolve 和 reject 兩個參數的函式（executor）
 語法
@@ -271,7 +272,7 @@ then & catch
 
 - catch() 方法：當從 reject() 獲得錯誤訊息時 — 狀態由 Pending 轉為 Rejected — catch() 方法就會被調用來處理錯誤。
 
-#### 串連 then 方法：Promise Chain
+#### 串連then方法：Promise Chain
 
 還記得那有點誇張的 Callback Hell 😱 嗎？我們依序要向不同伺服器或資料庫獲取資料 — 也就是要「依序」處理多個「非同步」作業 — 所以透過一層層的 Callback 來達成！
 從上面 then() 和 catch() 方法的範例可以發現，依據非同步作業執行完成後要處理的後續步驟被獨立了出來，程式碼的可讀性就高很多 — 在依序處理多個「非同步」作業時會更為明顯 — 這是透過 then() 方法的串接：
@@ -334,19 +335,20 @@ Promise.all([oneSecond, twoSecond, threeSecond])
     console.log(oneSecond, twoSecond, threeSecond)
   })
 
-  ```
+```
 
-  ## Aysnc / Await
+  ##  Aysnc/Await
   透過 Promise 包裝和使用，的確避免了 🎄 Callback Hell — Promise Chain 讓整個流程更清楚，提升了程式碼的易讀性與可維護性。
 
-  ### Async / Await 是所謂的語法糖衣
+  ### Async/Await 是所謂的語法糖衣
 
   - async/await 是一種新的語法撰寫方式，來處理「非同步事件」
   - async/await 讓非同步的程式碼讀起來更像在寫「同步程式碼」
   - async/await 是用來簡單化和清楚化 Promise Chain 相對複雜的結構
   - async function 回傳的一樣是 Promise 物件，只是針對 promise-based 寫法進行包裝
 
-  ### Async 關鍵字
+  ### Async關鍵字
+
    async 關鍵字可以放在任意函式以前，這意味者：「我們正宣告一個非同步的函式，且這個函式會回傳一個 Promise 物件」
 
     ```
@@ -359,8 +361,9 @@ Promise.all([oneSecond, twoSecond, threeSecond])
     async function getGroupInfo() {
     return  data
     }
+
     ```
-  ### Await 關鍵字
+  ### Await關鍵字
 
   在 async 函式中使用 await 關鍵字意味者：「我們請 JavaScript 等待這個非同步的作業完成，才展開後續的動作」
   換句話說：await 讓 async 函式的執行動作暫停，等到它獲得回傳的 Promise 物件後--無論執行成功（fulfilled）或失敗（rejected）--才恢復執行 async 函式
@@ -369,7 +372,7 @@ Promise.all([oneSecond, twoSecond, threeSecond])
 
   👍優點 2：承接優點 1，由於我們將回傳的結果存於一個變數中，這個變數將可以在後續自由的被使用；然而若是透過 then() 方法獲取值來使用，這個值將無法再被帶往下個 then() 方法中使用--要的話也很麻煩
 
-  ### Async / Await範例
+  ### Async/Await範例
 
   在以下範例中，依然先用 setTimeout() 來模仿類似向資料庫請求和等待資料的非同步事件：
 
@@ -405,10 +408,11 @@ Promise.all([oneSecond, twoSecond, threeSecond])
     getGroupInfo()
 
  ```
+
   錯誤處理
   當獲得錯誤回傳（Rejected）時，await 會丟出 reject 的值 — 這時可以使用 try…catch…來捕捉錯誤原因：
 
- ```
+```
   async function getGroupInfo() {
   try {
     const firstInfo = await getFirstInfo()
@@ -423,13 +427,13 @@ Promise.all([oneSecond, twoSecond, threeSecond])
 
     getGroupInfo()
 
-  ```  
+```  
 
-  ### await 搭配 Promise.all( […] ) 方法
+  ### await搭配Promise.all( […] )方法
 
   在以下範例中，依然先用 setTimeout() 來模仿類似向兩個資料庫請求獲取資料的非同步事件：透過 await 關鍵字搭配 Promise.all() 方法，同步向兩個資料庫獲取資料，並等到兩筆資料都成功回傳後，才印出結果 — 省時效率高🤩
 
- ``` 
+  ``` 
     function getFirstInfo() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -462,16 +466,23 @@ Promise.all([oneSecond, twoSecond, threeSecond])
     }
 
     getGroupInfo()
- ``` 
+    
+  ``` 
+
+  
 
   ## 心得:
-     這兩天上課覺得自己還有很多得疑問 就像下面的圖
-     
-    ![](https://i.imgur.com/4RnEosY.jpg)
 
-     上課的練習 有時候很可怕 拼拼湊湊的程式碼  可怕的試一試之後還跑得動不知道為什麼 蠻臉問號
+       這兩天上課覺得自己還有很多得疑問就像下面的圖
 
-     最後相信老師說的
-      ![](https://i.imgur.com/7tVOofS.jpg)
+      ![](https://i.imgur.com/4RnEosY.jpg)
 
-      今天的我比昨天進步 總有一天能趕上的!
+      上課的練習有時候很可怕拼拼湊湊的程式碼可怕的試一試之後還跑得動不知道為什麼蠻臉問號
+
+       最後相信老師說的
+
+       ![](https://i.imgur.com/7tVOofS.jpg)
+
+      今天的我比昨天進步總有一天能趕上的!
+
+    
